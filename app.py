@@ -42,10 +42,10 @@ def get_weather(city):
     Fetches real-time weather information using OpenWeatherMap API.
     """
     # --- IMPORTANT: Replace 'YOUR_API_KEY' with your actual OpenWeatherMap API Key ---
-    api_key = '9266c00413f6ef213904ad90f654be1e'  # <--- REPLACE THIS LINE WITH YOUR KEY
+    api_key = 'OpenWeatherMap API Key'  # <--- REPLACE THIS LINE WITH YOUR KEY
     # ---------------------------------------------------------------------------------
 
-    if not api_key or api_key == '9266c00413f6ef213904ad90f654be1e':
+    if not api_key or api_key == 'OpenWeatherMap API Key':
         return "Weather API key not set. Please update the code with your OpenWeatherMap API key."
     
     if not city:
