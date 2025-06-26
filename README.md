@@ -183,30 +183,6 @@ curl -X POST http://localhost:5000/chat \
 python app.py
 ```
 
-### Production Deployment
-1. Set `DEBUG=False` in environment variables
-2. Use a production WSGI server (Gunicorn, uWSGI)
-3. Set up proper environment variables
-4. Configure reverse proxy (Nginx, Apache)
-
-### Docker Deployment
-```dockerfile
-FROM python:3.9-slim
-WORKDIR /app
-COPY requirements.txt .
-RUN pip install -r requirements.txt
-COPY . .
-EXPOSE 5000
-CMD ["python", "app.py"]
-```
-
-## 🤝 Contributing
-
-1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Add tests if applicable
-5. Submit a pull request
 
 ## 🙏 Acknowledgments
 
@@ -216,14 +192,6 @@ CMD ["python", "app.py"]
 - [Wikipedia](https://wikipedia.org/) for information search
 - [Flask](https://flask.palletsprojects.com/) for the web framework
 
-## 📞 Support
-
-If you encounter any issues or have questions:
-1. Check the troubleshooting section below
-2. Review the error logs
-3. Open an issue on GitHub
-
-## 🔧 Troubleshooting
 
 ### Common Issues
 
