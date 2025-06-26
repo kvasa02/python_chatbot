@@ -1,86 +1,257 @@
-# Python Chatbot
+# 🤖 AI-Powered Chatbot with Natural Language Processing
 
-A simple AI-powered chatbot web application built with Python (Flask), scikit-learn for basic intent classification, and a modern web frontend using HTML, JavaScript, and CSS.
+A sophisticated AI chatbot built with Python, Flask, and advanced NLP techniques. This chatbot features intent classification, entity recognition, and integration with multiple external APIs for real-time responses.
 
+## ✨ Features
 
-## Features
+### 🧠 Natural Language Processing (NLP)
+- **Intent Classification**: Uses TF-IDF vectorization and Naive Bayes classification to understand user intent
+- **Entity Recognition**: Leverages spaCy NER to extract locations, persons, and organizations from text
+- **Pattern Matching**: Advanced regex patterns for fallback entity extraction
+- **Context Understanding**: Multi-turn conversation support with context awareness
 
-- **Intelligent Intent Recognition**: Uses scikit-learn (TfidfVectorizer + LogisticRegression) to classify intents such as greetings, weather queries, and farewells.
-- **Weather API Integration**: Responds with real weather data for a specified location using OpenWeatherMap (requires API key).
-- **Extensible Intent Patterns**: Easily add new patterns/intents to expand chatbot capabilities.
-- **Modern Chat UI**: Responsive frontend built with Bootstrap, custom CSS, and interactive JavaScript.
-- **Stateless Web Chat**: Interact with the bot in your browser; messages are exchanged via AJAX.
+### 🌐 External API Integrations
+- **Weather Information**: Real-time weather data via OpenWeatherMap API
+- **News Headlines**: Latest news via NewsAPI
+- **Information Search**: Wikipedia integration for detailed topic information
+- **Extensible Architecture**: Easy to add more API integrations
 
-## Project Structure
+### 🎨 Modern Web Interface
+- **Responsive Design**: Works seamlessly on desktop, tablet, and mobile
+- **Real-time Chat**: Live typing indicators and smooth animations
+- **Smart Suggestions**: Quick action buttons for common queries
+- **Beautiful UI**: Modern gradient design with smooth interactions
 
+### 🔧 Technical Features
+- **Flask Web Framework**: Robust backend with RESTful API
+- **Error Handling**: Comprehensive error handling and user feedback
+- **Environment Configuration**: Secure API key management
+- **Scalable Architecture**: Object-oriented design for easy maintenance
+
+## 🚀 Quick Start
+
+### Prerequisites
+- Python 3.8 or higher
+- pip (Python package installer)
+
+### Installation
+
+1. **Clone the repository**
+   ```bash
+   git clone <repository-url>
+   cd python_chatbot
+   ```
+
+2. **Install dependencies**
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+3. **Install spaCy model**
+   ```bash
+   python -m spacy download en_core_web_sm
+   ```
+
+4. **Set up API keys** (Optional but recommended)
+   
+   Create a `.env` file in the project root:
+   ```env
+   # Weather API (OpenWeatherMap)
+   OPENWEATHER_API_KEY=your_openweather_api_key_here
+   
+   # News API
+   NEWS_API_KEY=your_news_api_key_here
+   ```
+
+5. **Run the application**
+   ```bash
+   python app.py
+   ```
+
+6. **Open your browser**
+   Navigate to `http://localhost:5000`
+
+## 🔑 API Key Setup
+
+### OpenWeatherMap API
+1. Visit [OpenWeatherMap](https://openweathermap.org/api)
+2. Sign up for a free account
+3. Get your API key from the dashboard
+4. Add it to your `.env` file as `OPENWEATHER_API_KEY`
+
+### NewsAPI
+1. Visit [NewsAPI](https://newsapi.org/)
+2. Sign up for a free account
+3. Get your API key from the dashboard
+4. Add it to your `.env` file as `NEWS_API_KEY`
+
+## 💬 Usage Examples
+
+### Weather Queries
+- "What's the weather in London?"
+- "Temperature in New York"
+- "Weather forecast for Tokyo"
+
+### News Queries
+- "Show me the latest news"
+- "What's happening in the world?"
+- "Breaking news"
+
+### Information Search
+- "Tell me about Python programming"
+- "Who is Albert Einstein?"
+- "What is machine learning?"
+
+### General Conversation
+- "Hello" / "Hi" / "Hey"
+- "Tell me a joke"
+- "What can you do?"
+- "Goodbye"
+
+## 🏗️ Architecture
+
+### Backend Structure
 ```
-python_chatbot/
-│
-├── app.py              # Flask app with intent recognition and chat API
-├── requirements.txt    # Python dependencies
-├── static/
-│   ├── js/
-│   │   └── chat.js     # Frontend JavaScript for chat interactions
-│   ├── css/
-│   │   └── style.css   # Stylesheet for chat UI
-│
-├── templates/
-│   └── index.html      # Main HTML page
-└── README.md           # This file
+app.py              # Main Flask application
+config.py           # Configuration management
+requirements.txt    # Python dependencies
 ```
 
-## Setup & Installation
+### Frontend Structure
+```
+templates/
+├── index.html      # Main chat interface
+static/
+├── css/
+│   └── style.css   # Styling and animations
+└── js/
+    └── chat.js     # Frontend functionality
+```
 
-1. **Clone the Repository**
-    ```bash
-    git clone https://github.com/kvasa02/python_chatbot.git
-    cd python_chatbot
-    ```
+### Key Components
 
-2. **Install Dependencies**
-    ```bash
-    python -m venv venv
-    source venv/bin/activate  # On Windows: venv\Scripts\activate
-    pip install -r requirements.txt
-    ```
+#### EnhancedChatbot Class
+- **Intent Classification**: TF-IDF + Naive Bayes
+- **Entity Recognition**: spaCy NER + Regex fallback
+- **Response Generation**: Context-aware responses
+- **API Integration**: Weather, News, Wikipedia
 
-3. **Configure API Keys (Optional for Weather)**
-    - Edit `app.py` and set your OpenWeatherMap API key:
-      ```python
-      api_key = 'YOUR_API_KEY'
-      ```
-    - [Get a free API key here.](https://openweathermap.org/api)
+#### Frontend Interface
+- **Real-time Chat**: WebSocket-like experience
+- **Typing Indicators**: Visual feedback
+- **Responsive Design**: Mobile-first approach
+- **Accessibility**: Keyboard shortcuts and screen reader support
 
-4. **Run the Application**
-    ```bash
-    python app.py
-    ```
-    - The app will be available at [http://localhost:5000](http://localhost:5000).
+## 🔧 Configuration
 
-## Usage
+### Environment Variables
+| Variable | Description | Required | Default |
+|----------|-------------|----------|---------|
+| `OPENWEATHER_API_KEY` | OpenWeatherMap API key | No | None |
+| `NEWS_API_KEY` | NewsAPI key | No | None |
+| `DEBUG` | Flask debug mode | No | True |
+| `SECRET_KEY` | Flask secret key | No | Auto-generated |
 
-- Open your browser and go to [http://localhost:5000](http://localhost:5000)
-- Type a message like:
-  - `hello`
-  - `weather in London`
-  - `bye`
-- The bot will reply based on recognized intent.
+### Customization
+You can easily customize the chatbot by:
 
-## Customizing Intents
+1. **Adding new intents** in the `intents` list in `app.py`
+2. **Integrating new APIs** by adding methods to the `EnhancedChatbot` class
+3. **Modifying the UI** by editing the CSS and HTML files
+4. **Training custom models** by replacing the current NLP pipeline
 
-- Edit the `intents` list in `app.py` to add or modify supported intents and their patterns.
+## 🧪 Testing
 
-## Example Intents
+### Manual Testing
+1. Start the application
+2. Try various queries in the chat interface
+3. Test error scenarios (invalid API keys, network issues)
+4. Verify responsive design on different screen sizes
 
-| Intent   | Example User Input          | Example Bot Reply                        |
-|----------|----------------------------|------------------------------------------|
-| greet    | `hello`, `hi`, `hey`       | Hello! How can I assist you today?       |
-| weather  | `weather in Paris`         | Paris: clear sky, 22°C                   |
-| bye      | `bye`, `goodbye`           | Goodbye! Have a nice day!                |
+### API Testing
+```bash
+# Test the chat endpoint
+curl -X POST http://localhost:5000/chat \
+  -H "Content-Type: application/json" \
+  -d '{"message": "Hello"}'
+```
 
-## Dependencies
+## 🚀 Deployment
 
-- [Flask](https://flask.palletsprojects.com/)
-- [scikit-learn](https://scikit-learn.org/)
-- [requests](https://docs.python-requests.org/)
-- [Bootstrap 5](https://getbootstrap.com/) (CDN)
+### Local Development
+```bash
+python app.py
+```
+
+### Production Deployment
+1. Set `DEBUG=False` in environment variables
+2. Use a production WSGI server (Gunicorn, uWSGI)
+3. Set up proper environment variables
+4. Configure reverse proxy (Nginx, Apache)
+
+### Docker Deployment
+```dockerfile
+FROM python:3.9-slim
+WORKDIR /app
+COPY requirements.txt .
+RUN pip install -r requirements.txt
+COPY . .
+EXPOSE 5000
+CMD ["python", "app.py"]
+```
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes
+4. Add tests if applicable
+5. Submit a pull request
+
+## 📝 License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+## 🙏 Acknowledgments
+
+- [spaCy](https://spacy.io/) for NLP capabilities
+- [OpenWeatherMap](https://openweathermap.org/) for weather data
+- [NewsAPI](https://newsapi.org/) for news headlines
+- [Wikipedia](https://wikipedia.org/) for information search
+- [Flask](https://flask.palletsprojects.com/) for the web framework
+
+## 📞 Support
+
+If you encounter any issues or have questions:
+1. Check the troubleshooting section below
+2. Review the error logs
+3. Open an issue on GitHub
+
+## 🔧 Troubleshooting
+
+### Common Issues
+
+**spaCy model not found**
+```bash
+python -m spacy download en_core_web_sm
+```
+
+**API key errors**
+- Verify your API keys are correctly set in the `.env` file
+- Check that the APIs are accessible from your network
+- Ensure you have sufficient API credits
+
+**Import errors**
+```bash
+pip install -r requirements.txt --upgrade
+```
+
+**Port already in use**
+```bash
+# Change the port in app.py or kill the process using port 5000
+lsof -ti:5000 | xargs kill -9
+```
+
+---
+
+**Happy Chatting! 🤖✨**

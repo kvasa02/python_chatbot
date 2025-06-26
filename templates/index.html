@@ -2,33 +2,75 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>AI Chatbot</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI-Powered Chatbot</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 </head>
 <body>
-<div class="container py-5">
-    <div class="row justify-content-center">
-        <div class="col-md-6">
-            <div class="card shadow">
-                <div class="card-header bg-primary text-white">
-                    <h4 class="mb-0">AI Chatbot</h4>
-                </div>
-                <div class="card-body chat-box" id="chat-box">
-                    <!-- Chat messages will go here -->
-                </div>
-                <div class="card-footer">
-                    <form id="chat-form" autocomplete="off">
-                        <div class="input-group">
-                            <input type="text" id="user-input" class="form-control" placeholder="Type your message...">
-                            <button class="btn btn-primary" type="submit">Send</button>
+    <div class="container">
+        <div class="chat-container">
+            <div class="chat-header">
+                <div class="status-indicator"></div>
+                <h1><i class="fas fa-robot"></i> AI Assistant</h1>
+                <p>Powered by Natural Language Processing</p>
+            </div>
+            
+            <div class="chat-box" id="chat-box">
+                <!-- Welcome message -->
+                <div class="message bot-msg">
+                    <div class="avatar bot-avatar">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <div class="message-bubble bot-bubble">
+                        <div>Hello! I'm your AI assistant. I can help you with:</div>
+                        <div style="margin-top: 10px;">
+                            <div>🌤️ <strong>Weather information</strong> - Ask about weather in any city</div>
+                            <div>📰 <strong>Latest news</strong> - Get current headlines</div>
+                            <div>🔍 <strong>Search information</strong> - Find details about topics</div>
+                            <div>😄 <strong>Tell jokes</strong> - Have some fun!</div>
                         </div>
-                    </form>
+                        <div style="margin-top: 10px;">Just type your message or try one of the suggestions below!</div>
+                        <div class="message-time" id="welcome-time"></div>
+                    </div>
+                </div>
+                
+                <!-- Typing indicator -->
+                <div class="typing-indicator" id="typing-indicator">
+                    <div class="typing-dot"></div>
+                    <div class="typing-dot"></div>
+                    <div class="typing-dot"></div>
+                </div>
+            </div>
+            
+            <div class="chat-input-container">
+                <form class="chat-form" id="chat-form" autocomplete="off">
+                    <div class="input-group">
+                        <input type="text" id="user-input" class="user-input" placeholder="Type your message..." autocomplete="off">
+                    </div>
+                    <button type="submit" class="send-btn" id="send-btn">
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                </form>
+                
+                <div class="suggestions" id="suggestions">
+                    <button class="suggestion-btn" onclick="sendSuggestion('weather in London')">
+                        <i class="fas fa-cloud-sun"></i> Weather
+                    </button>
+                    <button class="suggestion-btn" onclick="sendSuggestion('latest news')">
+                        <i class="fas fa-newspaper"></i> News
+                    </button>
+                    <button class="suggestion-btn" onclick="sendSuggestion('tell me about Python')">
+                        <i class="fas fa-search"></i> Search
+                    </button>
+                    <button class="suggestion-btn" onclick="sendSuggestion('tell me a joke')">
+                        <i class="fas fa-laugh"></i> Joke
+                    </button>
                 </div>
             </div>
         </div>
     </div>
-</div>
-<script src="{{ url_for('static', filename='js/chat.js') }}"></script>
+
+    <script src="{{ url_for('static', filename='js/chat.js') }}"></script>
 </body>
 </html>
